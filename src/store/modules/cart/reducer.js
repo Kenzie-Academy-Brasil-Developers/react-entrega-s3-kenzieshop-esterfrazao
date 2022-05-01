@@ -1,7 +1,7 @@
 import { ADD_CART, REMOVE_CART } from "./actionTypes";
 
 const cartReducer = (
-  state = localStorage.getItem("@Kenzieshop:cart") || [],
+  state = JSON.parse(localStorage.getItem("@Kenzieshop:cart")) || [],
   action
 ) => {
   switch (action.type) {
