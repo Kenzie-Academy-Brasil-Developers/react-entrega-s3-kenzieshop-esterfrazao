@@ -4,7 +4,7 @@ import { Stack } from "@chakra-ui/react";
 
 const App = () => {
   return (
-    <Stack boxSizing="border-box" width="98.4vw">
+    <Stack boxSizing="border-box" width="100vw">
       <Header />
       <Routes />;
     </Stack>
