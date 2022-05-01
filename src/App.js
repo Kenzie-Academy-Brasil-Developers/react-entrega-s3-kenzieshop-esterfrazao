@@ -1,16 +1,14 @@
-import products from "./database";
-import "./App.css";
+import Routes from "./routes";
+import Header from "./components/Header";
+import { Stack } from "@chakra-ui/react";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        {products.map((product, index) => (
-          <img key={index} src={product.img} alt="imagem" />
-        ))}
-      </header>
-    </div>
+    <Stack boxSizing="border-box" width="98.4vw">
+      <Header />
+      <Routes />;
+    </Stack>
   );
-}
+};
 
 export default App;
