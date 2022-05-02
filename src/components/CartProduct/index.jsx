@@ -1,15 +1,19 @@
 import {
   Box,
-  Button,
   Heading,
   HStack,
+  IconButton,
   Image,
   Text,
   VStack,
 } from "@chakra-ui/react";
 
-import { removeProductThunk } from "../../store/modules/cart/thunks";
+import {
+  addProductThunk,
+  removeProductThunk,
+} from "../../store/modules/cart/thunks";
 import { useDispatch } from "react-redux";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 const CartProduct = ({ product }) => {
   const { name, img, description, price, id } = product;
@@ -31,13 +35,20 @@ const CartProduct = ({ product }) => {
       <Box as="span" color="pink.500">
         {price}
       </Box>
-      <Button
-        onClick={() => dispatch(removeProductThunk(id))}
-        variant="outline"
+      <IconButton
+        onClick={() => dispatch(addProductThunk(product))}
         colorScheme="pink"
-      >
-        Remover do Carrinho
-      </Button>
+        aria-label="Add Product Button"
+        size="lg"
+        icon={<AddIcon />}
+      />
+      <IconButton
+        onClick={() => dispatch(removeProductThunk(id))}
+        colorScheme="pink"
+        aria-label="Remove Product Button"
+        size="lg"
+        icon={<MinusIcon />}
+      />
     </HStack>
   );
 };
