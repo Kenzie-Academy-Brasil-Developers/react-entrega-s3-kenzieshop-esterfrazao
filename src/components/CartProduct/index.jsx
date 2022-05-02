@@ -39,14 +39,14 @@ const CartProduct = ({ product }) => {
         onClick={() => dispatch(addProductThunk(product))}
         colorScheme="pink"
         aria-label="Add Product Button"
-        size="lg"
+        size="md"
         icon={<AddIcon />}
       />
       <IconButton
         onClick={() => dispatch(removeProductThunk(id))}
         colorScheme="pink"
         aria-label="Remove Product Button"
-        size="lg"
+        size="md"
         icon={<MinusIcon />}
       />
     </HStack>

@@ -4,7 +4,13 @@ import { Wrap } from "@chakra-ui/react";
 
 const Home = () => {
   return (
-    <Wrap spacing="30px" margin="10px" width="95%" justify="center">
+    <Wrap
+      overflowY="scroll"
+      spacing="50px"
+      margin="10px"
+      height="85.8vh"
+      justify="center"
+    >
       {products.map((product, index) => (
         <Product key={index} product={product} />
       ))}
