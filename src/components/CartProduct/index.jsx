@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Heading,
   HStack,
   IconButton,
@@ -16,11 +17,17 @@ import { useDispatch } from "react-redux";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 const CartProduct = ({ product }) => {
-  const { name, img, description, price, id } = product;
+  const { name, img, quantity, id } = product;
   const dispatch = useDispatch();
 
   return (
-    <HStack height="300px" width="90%" padding="15px">
+    <Flex
+      justify="space-between"
+      align="center"
+      height="300px"
+      width="90%"
+      padding="15px"
+    >
       <Image
         borderRadius="30px"
         boxSize="80%"
@@ -28,28 +35,31 @@ const CartProduct = ({ product }) => {
         src={img}
         alt={name}
       />
-      <VStack spacing="10">
-        <Heading size="2xl">{name}</Heading>
-        <Text fontSize="1.5rem">{description}</Text>
+      <Heading size="2xl" textAlign="center">
+        {name}
+      </Heading>
+      <VStack>
+        <Text fontSize="2em" fontWeight="bold">
+          {quantity}
+        </Text>
+        <HStack>
+          <IconButton
+            onClick={() => dispatch(addProductThunk(product))}
+            colorScheme="pink"
+            aria-label="Add Product Button"
+            size="md"
+            icon={<AddIcon />}
+          />
+          <IconButton
+            onClick={() => dispatch(removeProductThunk(id))}
+            colorScheme="pink"
+            aria-label="Remove Product Button"
+            size="md"
+            icon={<MinusIcon />}
+          />
+        </HStack>
       </VStack>
-      <Box as="span" color="pink.500">
-        {price}
-      </Box>
-      <IconButton
-        onClick={() => dispatch(addProductThunk(product))}
-        colorScheme="pink"
-        aria-label="Add Product Button"
-        size="md"
-        icon={<AddIcon />}
-      />
-      <IconButton
-        onClick={() => dispatch(removeProductThunk(id))}
-        colorScheme="pink"
-        aria-label="Remove Product Button"
-        size="md"
-        icon={<MinusIcon />}
-      />
-    </HStack>
+    </Flex>
   );
 };
 
