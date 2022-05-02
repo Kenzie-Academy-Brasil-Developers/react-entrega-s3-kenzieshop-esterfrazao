@@ -1,4 +1,4 @@
-import { addProdut, removeProduct } from "./actions";
+import { addProdut, removeProduct, clearCart } from "./actions";
 
 export const addProductThunk = (product) => (dispatch, getState) => {
   const { cart } = getState();
@@ -27,4 +27,9 @@ export const removeProductThunk = (id) => (dispatch, getState) => {
   }
   localStorage.setItem("@Kenzieshop:cart", JSON.stringify(list));
   dispatch(removeProduct(list));
+};
+
+export const clearCartThunk = () => (dispatch) => {
+  localStorage.clear();
+  dispatch(clearCart());
 };

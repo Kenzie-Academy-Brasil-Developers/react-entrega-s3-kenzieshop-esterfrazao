@@ -12,7 +12,7 @@ import CartProduct from "../../components/CartProduct";
 import { useSelector } from "react-redux";
 import formatter from "../../utils/formatter";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../../store/modules/cart/actions";
+import { clearCartThunk } from "../../store/modules/cart/thunks";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
@@ -55,7 +55,7 @@ const Cart = () => {
         <Button
           size="lg"
           colorScheme="gray"
-          onClick={() => dispatch(clearCart())}
+          onClick={() => dispatch(clearCartThunk())}
         >
           Limpar Carrinho
         </Button>
