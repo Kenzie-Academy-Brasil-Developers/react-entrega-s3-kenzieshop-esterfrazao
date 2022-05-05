@@ -3,9 +3,9 @@ import { addProdut, removeProduct, clearCart } from "./actions";
 export const addProductThunk = (product) => (dispatch, getState) => {
   const { cart } = getState();
   const list = [...cart];
+  const cartProduct = list.find(({ id }) => id === product.id);
 
-  if (product.quantity >= 1) {
-    const cartProduct = list.find(({ id }) => id === product.id);
+  if (cartProduct) {
     cartProduct.quantity += 1;
   } else {
     product.quantity = 1;

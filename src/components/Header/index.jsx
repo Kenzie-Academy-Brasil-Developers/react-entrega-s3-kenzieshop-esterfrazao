@@ -15,6 +15,10 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const history = useHistory();
   const list = useSelector((state) => state.cart);
+  const totalProducts = list.reduce(
+    (previous, current) => previous + current.quantity,
+    0
+  );
 
   return (
     <Flex
@@ -54,7 +58,7 @@ const Header = () => {
               borderRadius="full"
               colorScheme="red"
             >
-              {list.length}
+              {totalProducts}
             </Tag>
           )}
         </VStack>
